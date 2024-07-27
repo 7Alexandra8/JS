@@ -1,20 +1,66 @@
-button {
-  margin: 5px;
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #0056b3;
+  --success-color: #28a745;
+  --success-hover-color: #218838;
+  --background-color: #f8f9fa;
+  --border-color: #ced4da;
+  --box-shadow: rgba(0, 0, 0, 0.1);
+  --text-color: #333;
+  --heading-font: 'Arial', sans-serif;
+  --button-font-size: 1rem;
+}
+
+.App {
+  font-family: var(--heading-font);
+  text-align: center;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+  background-color: var(--background-color);
+  border-radius: 8px;
+  box-shadow: 0 0 10px var(--box-shadow);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.sort-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.sort-buttons button {
+  margin: 0 10px;
   padding: 10px 20px;
   cursor: pointer;
   border: none;
   border-radius: 5px;
-  background-color: transparent; /* Прозрачный фон */
-  color: #28a745; /* Зеленый текст */
+  background-color: var(--primary-color);
+  color: white;
   font-size: var(--button-font-size);
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
-button:hover {
-  color: #218838; /* Более темный зеленый цвет при наведении */
+.sort-buttons button:hover {
+  background-color: var(--secondary-color);
 }
 
-button:focus {
-  outline: none; /* Убираем обводку */
-  box-shadow: none; /* Убираем box-shadow */
+.add-task-btn {
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.add-task-btn:hover {
+  background-color: var(--secondary-color);
 }

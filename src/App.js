@@ -56,10 +56,15 @@ const App = () => {
     };
 
     const handleSortChange = (field) => {
-        setSort((prevSort) => ({
-            field,
-            direction: prevSort.field === field && prevSort.direction === 'asc' ? 'desc' : 'asc',
-        }));
+        // If field is '...', set sorting to null or ignore sorting
+        if (field === '...') {
+            setSort(null);
+        } else {
+            setSort((prevSort) => ({
+                field,
+                direction: prevSort && prevSort.field === field && prevSort.direction === 'asc' ? 'desc' : 'asc',
+            }));
+        }
     };
 
     const filteredTodos = todos.filter(todo =>
@@ -70,7 +75,7 @@ const App = () => {
         return true;
     });
 
-    const sortedTodos = filteredTodos.sort((a, b) => {
+    const sortedTodos = (sort ? filteredTodos.sort((a, b) => {
         let comparison = 0;
         if (sort.field === 'date') {
             comparison = new Date(a.dueDate) - new Date(b.dueDate);
@@ -78,7 +83,7 @@ const App = () => {
             comparison = a.title.localeCompare(b.title);
         }
         return sort.direction === 'asc' ? comparison : -comparison;
-    });
+    }) : filteredTodos);
 
     return (
         <div className="container">
@@ -97,7 +102,7 @@ const App = () => {
                     </select>
                     <select onChange={(e) => handleSortChange(e.target.value)}>
                         <option value="date">По дате</option>
-                        <option value="title">По названию</option>
+
                     </select>
                 </div>
             </header>
