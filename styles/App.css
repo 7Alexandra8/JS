@@ -1,6 +1,6 @@
 :root {
-  --primary-color: #007bff;
-  --secondary-color: #0056b3;
+  --primary-color: #28a745;
+  --secondary-color: #218838;
   --success-color: #28a745;
   --success-hover-color: #218838;
   --background-color: #f8f9fa;
@@ -12,20 +12,20 @@
 }
 
 .App {
-  font-family: var(--heading-font);
+  font-family: 'Arial', sans-serif;
   text-align: center;
   margin: 0 auto;
   max-width: 800px;
   padding: 20px;
-  background-color: var(--background-color);
+  background-color: #f8f9fa;
   border-radius: 8px;
-  box-shadow: 0 0 10px var(--box-shadow);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: var(--text-color);
+  color: #333;
 }
 
 .sort-buttons {
@@ -40,19 +40,19 @@ h1 {
   cursor: pointer;
   border: none;
   border-radius: 5px;
-  background-color: var(--primary-color);
+  background-color: #28a745;
   color: white;
-  font-size: var(--button-font-size);
+  font-size: 1rem;
   transition: background-color 0.3s ease;
 }
 
 .sort-buttons button:hover {
-  background-color: var(--secondary-color);
+  background-color: #218838;
 }
 
 .add-task-btn {
   padding: 10px 20px;
-  background-color: var(--primary-color);
+  background-color: #28a745;
   color: white;
   border: none;
   border-radius: 5px;
@@ -62,5 +62,5 @@ h1 {
 }
 
 .add-task-btn:hover {
-  background-color: var(--secondary-color);
+  background-color: #218838;
 }
