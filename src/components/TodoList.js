@@ -1,21 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TodoItem from './TodoItem';
 import '../styles/TodoList.css';
 
-const TodoList = ({ todos, openModal, deleteTodo, toggleComplete, editTodo }) => {
+const TodoList = ({ todos, openModal, deleteTodo, toggleComplete }) => {
+    const [sortOrder, setSortOrder] = useState('asc');
+
+    const sortedTodos = [...todos].sort((a, b) => {
+        const dateA = new Date(a.dueDate);
+        const dateB = new Date(b.dueDate);
+        return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
+    });
+
     return (
-        <ul className="todo-list">
-            {todos.map(todo => (
-                <TodoItem
-                    key={todo.id}
-                    todo={todo}
-                    openModal={() => openModal(todo)} // Передача задачи для редактирования
-                    deleteTodo={deleteTodo}
-                    toggleComplete={toggleComplete}
-                    editTodo={editTodo}
-                />
-            ))}
-        </ul>
+        <div>
+            <div className="sort-buttons">
+                <button onClick={() => setSortOrder('asc')}>По возрастанию</button>
+                <button onClick={() => setSortOrder('desc')}>По убыванию</button>
+                <button onClick={() => setSortOrder('asc')}>Сбросить сортировку</button>
+            </div>
+            <ul className="todo-list">
+                {sortedTodos.map(todo => (
+                    <TodoItem
+                        key={todo.id}
+                        todo={todo}
+                        openModal={() => openModal(todo)}
+                        deleteTodo={deleteTodo}
+                        toggleComplete={toggleComplete}
+                    />
+                ))}
+            </ul>
+        </div>
     );
 };
 

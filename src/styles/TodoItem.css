@@ -1,34 +1,48 @@
 .todo-item {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
     padding: 10px;
-    border-bottom: 1px solid #ccc;
+    transition: background-color 0.3s;
 }
 
-.todo-item.checked {
-    text-decoration: line-through;
-    color: #aaa;
+.todo-item.completed {
+    background-color: #e0ffe0;
 }
 
 .status-mark {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    border: 2px solid #4caf50;
-    margin-right: 10px;
+    border: 2px solid #4CAF50;
     cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s;
 }
 
-.status-mark.checked {
-    background: #4caf50;
-    border-color: #4caf50;
+.status-mark.completed {
+    background-color: #2e7d32;
+    border-color: #2e7d32;
+}
+
+.status-mark.incomplete {
+    background-color: #81c784;
+    border-color: #81c784;
 }
 
 .todo-title {
-    flex-grow: 1;
+    flex: 1;
     cursor: pointer;
+    margin-right: 10px;
+}
+
+.todo-date {
+    color: #999;
+    font-size: 14px;
+    margin-right: 10px;
 }
 
 .todo-actions {
@@ -37,16 +51,32 @@
 }
 
 .edit-btn,
-.close-btn {
-    background: none;
+.delete-btn {
     border: none;
-    color: #888;
-    font-size: 1.2em;
+    background: none;
     cursor: pointer;
-    transition: color 0.3s ease;
+    font-size: 16px;
 }
 
-.edit-btn:hover,
-.close-btn:hover {
-    color: #000;
+.edit-btn {
+    color: #4CAF50;
+}
+
+.delete-btn {
+    color: #f44336;
+}
+
+@media (max-width: 600px) {
+    .todo-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .todo-title, .todo-date, .todo-actions {
+        margin: 5px 0;
+    }
+
+    .todo-actions {
+        gap: 5px;
+    }
 }

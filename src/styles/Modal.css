@@ -1,3 +1,63 @@
+/* Контейнер */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 10px;
+}
+
+.header h1 {
+    color: #4CAF50;
+    margin: 0;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+}
+
+.controls input,
+.controls select {
+    padding: 5px;
+    font-size: 14px;
+}
+
+.todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Кнопка добавления задачи */
+.add-task-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.add-task-btn:hover {
+    background-color: #45a049;
+}
+
+/* Контейнер модального окна */
 .modal {
     position: fixed;
     top: 0;
@@ -8,15 +68,178 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1000;
     overflow-y: auto; /* Для прокрутки, если контент превышает высоту экрана */
 }
 
+/* Контент модального окна */
 .modal-content {
     background-color: #fff;
     padding: 20px;
-    border-radius: 5px;
-    width: 90%; /* Измените при необходимости */
-    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px; /* Увеличено для более комфортного размещения формы */
+    max-height: 85vh; /* Ограничение высоты */
+    overflow-y: auto;
     position: relative;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Кнопка закрытия модального окна */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333; /* Темный цвет для контраста */
+    outline: none; /* Убираем синюю обводку */
+    box-shadow: none; /* Убираем box-shadow, если применяется */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #e74c3c; /* Красный цвет при наведении */
+    transform: scale(1.1); /* Увеличение при наведении */
+}
+
+.close-btn:focus {
+    outline: none; /* Убираем синюю обводку при фокусировке */
+    box-shadow: none; /* Убираем box-shadow, если применяется */
+    color: #e74c3c; /* Красный цвет при фокусировке */
+}
+
+/* Стили для формы */
+.todo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.todo-form input, .todo-form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.todo-form button {
+    background-color: #4CAF50; /* Зеленая кнопка */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.todo-form button:hover {
+    background-color: #45a049; /* Темно-зеленый при наведении */
+}
+
+/* Адаптивность для маленьких экранов */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 15px;
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .close-btn {
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+    }
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+.todo-item.completed {
+    background-color: #e0ffe0;
+}
+
+.status-mark {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #4CAF50;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+}
+
+.status-mark.completed {
+    background-color: #2e7d32;
+    border-color: #2e7d32;
+}
+
+.status-mark.incomplete {
+    background-color: #81c784;
+    border-color: #81c784;
+}
+
+.todo-title {
+    flex: 1;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.todo-date {
+    color: #999;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.todo-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-btn,
+.delete-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.edit-btn {
+    color: #4CAF50;
+}
+
+.delete-btn {
+    color: #f44336;
+}
+
+@media (max-width: 600px) {
+    .todo-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .todo-title, .todo-date, .todo-actions {
+        margin: 5px 0;
+    }
+
+    .todo-actions {
+        gap: 5px;
+    }
 }

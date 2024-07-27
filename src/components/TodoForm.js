@@ -1,28 +1,27 @@
-// components/TodoForm.js
 import React, { useState, useEffect } from 'react';
 import '../styles/TodoForm.css';
 
 const TodoForm = ({ addTodo, editTodo, todoToEdit, closeModal }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [tag, setTag] = useState('');
+    const [dueDate, setDueDate] = useState('');
 
     useEffect(() => {
         if (todoToEdit) {
             setTitle(todoToEdit.title);
             setDescription(todoToEdit.description);
-            setTag(todoToEdit.tag);
+            setDueDate(todoToEdit.dueDate);
         } else {
             setTitle('');
             setDescription('');
-            setTag('');
+            setDueDate('');
         }
     }, [todoToEdit]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!title || !description) {
-            alert("Название и описание обязательны к заполнению");
+        if (!title || !dueDate) {
+            alert("Название и дата завершения обязательны к заполнению");
             return;
         }
 
@@ -30,8 +29,8 @@ const TodoForm = ({ addTodo, editTodo, todoToEdit, closeModal }) => {
             id: todoToEdit ? todoToEdit.id : Date.now(),
             title,
             description,
-            tag,
-            completed: false,
+            dueDate,
+            completed: todoToEdit ? todoToEdit.completed : false,
         };
 
         if (todoToEdit) {
@@ -58,10 +57,10 @@ const TodoForm = ({ addTodo, editTodo, todoToEdit, closeModal }) => {
                 onChange={(e) => setDescription(e.target.value)}
             />
             <input
-                type="text"
-                placeholder="Тег"
-                value={tag}
-                onChange={(e) => setTag(e.target.value)}
+                type="date"
+                placeholder="Дата завершения"
+                value={dueDate}
+                onChange={(e) => setDueDate(e.target.value)}
             />
             <button type="submit">{todoToEdit ? 'Сохранить' : 'Добавить'}</button>
         </form>

@@ -1,54 +1,55 @@
-/* Global Styles */
-body, html {
-  margin: 0;
-  padding: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: #f0f5f5;
-  color: #333;
-}
-
-/* Flexbox for center alignment */
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
   padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* App Header Styles */
 .header {
-  background-color: #fff;
-  width: 100%;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  border-bottom: 2px solid #4CAF50;
+  padding-bottom: 10px;
 }
 
 .header h1 {
-  font-size: 24px;
-  font-weight: bold;
+  color: #4CAF50;
+  margin: 0;
 }
 
-.header .menu, .header .settings {
-  font-size: 24px;
-  cursor: pointer;
+.controls {
+  display: flex;
+  gap: 10px;
 }
 
-/* Add Task Button Styles */
+.controls input,
+.controls select {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .add-task-btn {
-  background-color: #8fc36b;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
   color: white;
-  padding: 15px;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 16px;
 }
 
 .add-task-btn:hover {
-  background-color: #76a653;
+  background-color: #45a049;
 }

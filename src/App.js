@@ -8,6 +8,9 @@ const App = () => {
     const [todos, setTodos] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [todoToEdit, setTodoToEdit] = useState(null);
+    const [filter, setFilter] = useState('all');
+    const [sort, setSort] = useState({ field: 'date', direction: 'asc' });
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
         const savedTodos = JSON.parse(localStorage.getItem('todos'));
@@ -48,19 +51,61 @@ const App = () => {
         setTodoToEdit(null);
     };
 
+    const handleSearch = (e) => {
+        setSearchQuery(e.target.value.toLowerCase());
+    };
+
+    const handleSortChange = (field) => {
+        setSort((prevSort) => ({
+            field,
+            direction: prevSort.field === field && prevSort.direction === 'asc' ? 'desc' : 'asc',
+        }));
+    };
+
+    const filteredTodos = todos.filter(todo =>
+        todo.title.toLowerCase().includes(searchQuery)
+    ).filter(todo => {
+        if (filter === 'completed') return todo.completed;
+        if (filter === 'incomplete') return !todo.completed;
+        return true;
+    });
+
+    const sortedTodos = filteredTodos.sort((a, b) => {
+        let comparison = 0;
+        if (sort.field === 'date') {
+            comparison = new Date(a.dueDate) - new Date(b.dueDate);
+        } else if (sort.field === 'title') {
+            comparison = a.title.localeCompare(b.title);
+        }
+        return sort.direction === 'asc' ? comparison : -comparison;
+    });
+
     return (
         <div className="container">
             <header className="header">
                 <h1>Список задач</h1>
-                <div className="menu">&#9776;</div>
-                <div className="settings">&#9881;</div>
+                <div className="controls">
+                    <input
+                        type="text"
+                        placeholder="Поиск задач"
+                        onChange={handleSearch}
+                    />
+                    <select onChange={(e) => setFilter(e.target.value)}>
+                        <option value="all">Все</option>
+                        <option value="completed">Завершенные</option>
+                        <option value="incomplete">Незавершенные</option>
+                    </select>
+                    <select onChange={(e) => handleSortChange(e.target.value)}>
+                        <option value="date">По дате</option>
+                        <option value="title">По названию</option>
+                    </select>
+                </div>
             </header>
             <TodoList
-                todos={todos}
+                todos={sortedTodos}
                 openModal={openModal}
                 deleteTodo={deleteTodo}
                 toggleComplete={toggleComplete}
-                editTodo={editTodo}
             />
             <button className="add-task-btn" onClick={() => openModal(null)}>Добавить задачу</button>
             {isModalOpen && (

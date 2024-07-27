@@ -1,52 +1,87 @@
-/* List Styles */
 .todo-list {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
-    width: 100%;
-    max-width: 600px;
 }
 
 .todo-item {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    transition: background-color 0.3s;
 }
 
 .todo-item.completed {
     background-color: #e0ffe0;
-    text-decoration: line-through;
 }
 
-.todo-item h3 {
-    margin: 0;
-    font-size: 18px;
-}
-
-.todo-item p {
-    margin: 5px 0 0 0;
-    color: #777;
-    font-size: 14px;
-}
-
-.todo-item .checkbox {
+.status-mark {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #4CAF50;
     cursor: pointer;
+    margin-right: 10px;
 }
 
-.todo-item .edit, .todo-item .delete {
+.status-mark:hover {
+    background-color: #4CAF50;
+}
+
+.todo-title {
+    flex: 1;
     cursor: pointer;
-    margin-left: 10px;
+    margin-right: 10px;
 }
 
-.todo-item .tag {
-    background-color: #f0f5f5;
-    color: #555;
-    border-radius: 3px;
-    padding: 3px 5px;
+.todo-date {
+    color: #999;
     font-size: 14px;
+    margin-right: 10px;
+}
+
+.todo-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-btn,
+.delete-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.edit-btn {
+    color: #4CAF50;
+}
+
+.delete-btn {
+    color: #f44336;
+}
+
+.sort-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.sort-buttons button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: var(--button-font-size);
+    transition: background-color 0.3s ease;
+}
+
+.sort-buttons button:hover {
+    background-color: #4CAF50;
 }

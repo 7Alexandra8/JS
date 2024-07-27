@@ -1,28 +1,33 @@
 .todo-form {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Отступы между элементами формы */
+    gap: 10px;
+}
+
+.todo-form h2 {
+    margin: 0;
+    color: #4CAF50;
 }
 
 .todo-form input,
 .todo-form textarea {
-    width: 100%; /* Занимает всю доступную ширину родительского элемента */
+    width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box; /* Учитывает padding и border в общей ширине */
+    border-radius: 5px;
+    font-size: 14px;
 }
 
 .todo-form button {
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #7b917b;
+    padding: 10px 20px;
+    background-color: #4CAF50;
     color: white;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    align-self: flex-end; /* Выравнивание кнопки вправо */
+    font-size: 16px;
 }
 
 .todo-form button:hover {
-    background-color: #556b2f;
+    background-color: #45a049;
 }
