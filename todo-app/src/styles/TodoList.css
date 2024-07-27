@@ -1,0 +1,52 @@
+/* List Styles */
+.todo-list {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    max-width: 600px;
+}
+
+.todo-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.todo-item.completed {
+    background-color: #e0ffe0;
+    text-decoration: line-through;
+}
+
+.todo-item h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.todo-item p {
+    margin: 5px 0 0 0;
+    color: #777;
+    font-size: 14px;
+}
+
+.todo-item .checkbox {
+    cursor: pointer;
+}
+
+.todo-item .edit, .todo-item .delete {
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.todo-item .tag {
+    background-color: #f0f5f5;
+    color: #555;
+    border-radius: 3px;
+    padding: 3px 5px;
+    font-size: 14px;
+}

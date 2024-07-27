@@ -1,0 +1,28 @@
+.todo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Отступы между элементами формы */
+}
+
+.todo-form input,
+.todo-form textarea {
+    width: 100%; /* Занимает всю доступную ширину родительского элемента */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Учитывает padding и border в общей ширине */
+}
+
+.todo-form button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #7b917b;
+    color: white;
+    cursor: pointer;
+    align-self: flex-end; /* Выравнивание кнопки вправо */
+}
+
+.todo-form button:hover {
+    background-color: #556b2f;
+}
